@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dbi-project-2-fe": {
+    "pos-bounded-context-species-webapp-draft": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/dbi-project-2-fe",
+            "outputPath": "dist/pos-bounded-context-species-webapp-draft",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -26,13 +26,14 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "/node_modules/chart.js/dist/chart.cjs"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dbi-project-2-fe:build:production"
+              "buildTarget": "pos-bounded-context-species-webapp-draft:build:production"
             },
             "development": {
-              "buildTarget": "dbi-project-2-fe:build:development"
+              "buildTarget": "pos-bounded-context-species-webapp-draft:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "dbi-project-2-fe:build"
+            "buildTarget": "pos-bounded-context-species-webapp-draft:build"
           }
         },
         "test": {

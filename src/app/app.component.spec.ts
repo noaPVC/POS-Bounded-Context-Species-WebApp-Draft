@@ -18,6 +18,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, dbi-project-2-fe');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, pos-bounded-context-species-webapp-draft');
   });
 });

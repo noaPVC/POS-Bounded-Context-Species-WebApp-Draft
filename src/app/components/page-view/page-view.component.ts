@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Observable, Subject, debounceTime, filter, takeUntil } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
-import { QuestionMongoFE } from '../../models/models';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-page-view',
@@ -11,10 +12,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './page-view.component.html',
   styleUrl: './page-view.component.scss',
 
-  // used components in-page-view.component.ts
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule
   ]
 })
 export class PageViewComponent implements OnInit, OnDestroy {

@@ -1,15 +1,9 @@
-/* general in-app style definitions */
+/* general in-app style definitions next to global primeng theme */
 
-* {
+body {
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
-
-
     font-family: 'Inter', sans-serif;
-}
-
-html,
-body {
-    height: 100%;
 }

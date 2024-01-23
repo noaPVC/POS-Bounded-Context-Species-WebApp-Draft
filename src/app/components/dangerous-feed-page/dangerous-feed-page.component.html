@@ -1,0 +1,9 @@
+<div class="page-wrapper">
+    
+    <div class="listing">
+        <app-dangerous-feed-item 
+            *ngFor="let dangerousFeed of dangerousFeeds$ | async"
+            [dangerousFeed]="dangerousFeed">
+        </app-dangerous-feed-item>
+    </div>
+</div>

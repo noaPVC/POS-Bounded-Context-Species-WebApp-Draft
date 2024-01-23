@@ -1,0 +1,33 @@
+<div class="species-item-wrapper">
+    <div class="block">
+        <p class="name">{{ species.Name }}</p>
+
+        <div class="depth key-value left-oriented" *ngIf="species.OccuresAt[0] as occurence">
+            <i class="fi fi-rr-water-lower"></i>
+
+            <p class="value">
+                {{ occurence.DepthStartInMeter | number:'1.1-1' }} - {{ occurence.DepthEndInMeter | number:'1.1-1' }} m
+            </p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="population key-value">
+            <i class="fi fi-rr-fish"></i>
+
+            <p class="value">
+                {{ species.Population | number }}
+            </p>
+        </div>
+
+        <div class="water-type-badge">
+            <div class="label">
+                Water Type
+            </div>
+
+            <p class="value">
+                {{ species.OccuresIn | waterType }}
+            </p>
+        </div>
+    </div>
+</div>

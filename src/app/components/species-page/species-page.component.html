@@ -1,0 +1,39 @@
+<div class="page-wrapper">
+    <form class="filter-controls species-filters" [formGroup]="form">
+        <p-autoComplete 
+            formControlName="searchTerm"
+            placeholder="Search for species"
+            [suggestions]="suggestions"
+            [itemSize]="10"
+            (completeMethod)="searchSuggestions($event)">
+        </p-autoComplete>
+
+        <div class="range">
+            <p class="label">Depth</p>
+
+            <div class="control">
+                <p class="from">
+                    {{ form.controls.range.value![0] }}m
+                </p>
+    
+                <p-slider class="p-slider"
+                    formControlName="range" 
+                    [range]="true"
+                    [min]="0" [max]="300"
+                    [animate]="true">
+                </p-slider>
+    
+                <p class="to">
+                    {{ form.controls.range.value![1] }}m
+                </p>
+            </div>
+        </div>
+    </form>
+    
+    <div class="listing">
+        <app-species-item 
+            *ngFor="let species of species$ | async"
+            [species]="species">
+        </app-species-item>
+    </div>
+</div>

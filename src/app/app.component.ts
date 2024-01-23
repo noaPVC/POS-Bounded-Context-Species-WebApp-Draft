@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { PageViewComponent } from './components/page-view/page-view.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ButtonModule } from 'primeng/button';
+import { NavbarComponent } from './components/core/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +9,7 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     RouterOutlet,
-
-    // used components in-app.component.ts
-    PageViewComponent
+    NavbarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

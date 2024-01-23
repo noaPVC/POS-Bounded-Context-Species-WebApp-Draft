@@ -1,0 +1,27 @@
+<div class="dangerous-feed-item-wrapper">
+    <div class="block">
+        <p class="name">{{ dangerousFeed.Headline }}</p>
+
+        <p class="body">
+            {{ dangerousFeed.Body }}
+        </p>
+
+        <div class="depth key-value left-oriented">
+            <i class="fi fi-rr-water-lower"></i>
+
+            <p class="value">
+                {{ dangerousFeed.DepthStartInMeter | number:'1.1-1' }} - {{ dangerousFeed.DepthEndInMeter | number:'1.1-1' }} m
+            </p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="population key-value">
+            <i class="fi fi-rr-fish"></i>
+
+            <p class="value">
+                {{ dangerousFeed.Species.length }}
+            </p>
+        </div>
+    </div>
+</div>

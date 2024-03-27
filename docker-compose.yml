@@ -13,7 +13,20 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
       WIREMOCK_URL: http://diver-service:8080
-      DIVER_API_URL: http://diver-application:8080
+      DIVER_API_URL: http://diver-user-application:8080
+    networks:
+      - diver-network
+  diver-user-application:
+    image: nickdotcom/dive-user-application:latest
+    ports:
+      - 9090:8080
+    depends_on:
+      - diver-service
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-user:5432/user
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
     networks:
       - diver-network
   diver-service:
@@ -32,6 +45,15 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: dive
+    networks:
+      - diver-network
+  database-user:
+    image: postgres:14.6
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user
     networks:
       - diver-network
 networks:

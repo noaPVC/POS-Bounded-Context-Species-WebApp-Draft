@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  diver-application:
+    image: nickdotcom/dive-application:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - diver-service
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/dive
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      WIREMOCK_URL: http://diver-service:8080
+      DIVER_API_URL: http://diver-application:8080
+    networks:
+      - diver-network
+  diver-service:
+    image: wiremock/wiremock:3.3.1
+    container_name: diver-service
+    volumes:
+      - ./local-setup:/home/wiremock
+    ports:
+      - 8383:8080
+    networks:
+      - diver-network
+  database:
+    image: postgres:14.6
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dive
+    networks:
+      - diver-network
+networks:
+  diver-network:
+    driver: bridge

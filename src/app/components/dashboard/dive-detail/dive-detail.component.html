@@ -1,0 +1,69 @@
+<div>
+  @if(dive !== undefined && dive !== null) {
+  <div class="container">
+    <h1>Dive Details</h1>
+    <div class="dive-details">
+      <label>ID:</label>
+      <p>{{ dive.id }}</p>
+
+      <label>Date:</label>
+      <p>{{ dive.date.toISOString().split("T")[0] }}</p>
+
+      <label>Rating:</label>
+      <p>{{ dive.rating }}</p>
+
+      <label>Weather:</label>
+      <p>{{ dive.weather }}</p>
+
+      <label>Visibility Distance:</label>
+      <p>
+        {{ dive.visibilityDistance.visibilityDistanceValue }}
+        {{ dive.visibilityDistance.distanceUnit }}
+      </p>
+
+      <label>Visibility Rating:</label>
+      <p>{{ dive.visibilityRating }}</p>
+
+      <label>Water Temperature:</label>
+      <p>
+        {{ dive.waterTemperature.temperatureValue }}
+        {{ dive.waterTemperature.temperatureUnit }}
+      </p>
+
+      <label>Air Temperature:</label>
+      <p>
+        {{ dive.airTemperature.temperatureValue }}
+        {{ dive.airTemperature.temperatureUnit }}
+      </p>
+
+      <label>Entry:</label>
+      <p>{{ dive.entry }}</p>
+
+      <label>Operator:</label>
+      <p>{{ dive.operator }}</p>
+
+      <label>Comments:</label>
+      <p>{{ dive.comments }}</p>
+
+      <label>Buddy:</label>
+      <p>{{ dive.buddy }}</p>
+
+      <label>Dive Type:</label>
+      <p>{{ dive.diveType }}</p>
+
+      <label>Super Dive:</label>
+      <p>{{ dive.superDive }}</p>
+
+      <label>Dive Vacation:</label>
+      <p>{{ dive.diveVacation }}</p>
+
+      <label>Equipment:</label>
+      <p>{{ dive.equipment }}</p>
+    </div>
+  </div>
+
+  } @else {
+
+  <div>Kein Tauchgang ausgewählt</div>
+  }
+</div>

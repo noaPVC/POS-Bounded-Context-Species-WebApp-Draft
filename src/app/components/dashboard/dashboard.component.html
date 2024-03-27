@@ -1,0 +1,39 @@
+<div class="page-wrapper">
+  <div>Willkommen zurück {{ user?.id }} !</div>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Weather</th>
+          <th>Rating</th>
+          <th>Entry</th>
+          <th>Comments</th>
+          <th>Operator</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (dive of dives; track $index) {
+        <tr (click)="diveDetail(dive.id)">
+          <td>{{ dive.id }}</td>
+          <td>{{ dive.date.toISOString().split("T")[0] }}</td>
+          <td>{{ dive.weather }}</td>
+          <td>{{ dive.rating }}</td>
+          <td>{{ dive.entry }}</td>
+          <td>{{ dive.comments }}</td>
+          <td>{{ dive.operator }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+@if(showDiveDetail) {
+<div class="popUp">
+  <div class="popupContent">
+    <app-dive-detail [dive]="detailDive"></app-dive-detail>
+    <button (click)="closeDiveDetail()">Close</button>
+  </div>
+</div>
+}

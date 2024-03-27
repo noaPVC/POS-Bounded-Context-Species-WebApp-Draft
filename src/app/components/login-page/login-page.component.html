@@ -1,0 +1,14 @@
+<div class="page-wrapper">
+  <form [formGroup]="loginUserForm" (submit)="login()">
+    <div>
+      <label>Username</label>
+      <input formControlName="userName" />
+    </div>
+    <div>
+      <label>Passwort</label>
+      <input type="password" formControlName="password" />
+    </div>
+
+    <button>Anmelden</button>
+  </form>
+</div>

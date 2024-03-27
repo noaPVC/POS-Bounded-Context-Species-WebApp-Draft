@@ -1,0 +1,119 @@
+<div style="width: 620px">
+  <form (submit)="addDive()">
+    <div style="display: flex; flex-direction: column; gap: 20px">
+      <!--Date+Weather-->
+      <div style="display: flex; gap: 12px">
+        <!--Date-->
+        <div style="display: flex; flex-direction: column">
+          <label>Date</label>
+          <p-calendar appendTo="body" [showIcon]="true"></p-calendar>
+        </div>
+        <!--Weather-->
+        <div style="display: flex; flex-direction: column">
+          <label>Weather</label>
+          <p-dropdown
+            [options]="weathers"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Weather Condition"
+          ></p-dropdown>
+        </div>
+      </div>
+      <!--Rating + Visibility Rating + Visibility Distance-->
+      <div style="display: flex; gap: 20px; align-items: flex-start">
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <label>Rating</label>
+          <p-rating [cancel]="false"></p-rating>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Visibility Rating</label>
+          <p-dropdown
+            [options]="visibilityRatingTypes"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Visibility"
+          ></p-dropdown>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Visibility Distance</label>
+          <p-inputNumber
+            mode="decimal"
+            inputId="withoutgrouping"
+            [useGrouping]="false"
+          ></p-inputNumber>
+        </div>
+      </div>
+      <!--Water + Air Temperature-->
+      <div style="display: flex; gap: 20px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Water Temperature</label>
+          <p-inputNumber
+            mode="decimal"
+            inputId="withoutgrouping"
+            [useGrouping]="false"
+          ></p-inputNumber>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Air Temperature</label>
+          <p-inputNumber
+            mode="decimal"
+            inputId="withoutgrouping"
+            [useGrouping]="false"
+          ></p-inputNumber>
+        </div>
+      </div>
+      <!--Entry + DiveType-->
+      <div style="display: flex; gap: 20px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Entry</label>
+          <p-dropdown
+            [options]="entry"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Entry"
+          ></p-dropdown>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Dive Type</label>
+          <p-dropdown
+            [options]="diveType"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Dive Type"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div style="display: flex; gap: 20px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Buddy</label>
+          <p-dropdown
+            [options]="entry"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Buddy"
+          ></p-dropdown>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label>Dive Vacation</label>
+          <p-dropdown
+            [options]="entry"
+            [showClear]="true"
+            appendTo="body"
+            placeholder="Choose Vacation"
+          ></p-dropdown>
+        </div>
+      </div>
+      <!--Comments-->
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label>Comments</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="text"
+        ></textarea>
+      </div>
+      <p-button type="submit">Add Dive</p-button>
+    </div>
+  </form>
+</div>

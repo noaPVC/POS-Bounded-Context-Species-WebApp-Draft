@@ -5,15 +5,27 @@ import { Router } from '@angular/router';
 import { Dive, DivePreview } from '../../models/dive';
 import { DiveDetailComponent } from './dive-detail/dive-detail.component';
 import { DiveService } from '../../services/dive.service';
+import { ButtonModule } from 'primeng/button';
+import { AddDiveComponent } from './add-dive/add-dive.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DiveDetailComponent],
+  imports: [DiveDetailComponent, ButtonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  providers: [DialogService],
 })
 export class DashboardComponent {
+  ref: DynamicDialogRef | undefined;
+
+  show() {
+    console.log('lkfjsd');
+    this.ref = this.dialogService.open(AddDiveComponent, {
+      header: 'Add a Dive',
+    });
+  }
   user: DiverDto | null = null;
   showDiveDetail = false;
   detailDive: Dive | null = null;
@@ -51,11 +63,12 @@ export class DashboardComponent {
   constructor(
     private userService: UserService,
     private router: Router,
-    private diveService: DiveService
+    private diveService: DiveService,
+    private dialogService: DialogService
   ) {
     this.user = this.userService.getUserFromLocalStorage();
     if (this.user === null) {
-      router.navigate(['/login']);
+      //router.navigate(['/login']);
     }
   }
 

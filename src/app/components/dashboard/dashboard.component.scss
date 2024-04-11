@@ -68,3 +68,28 @@ tbody {
   padding: 20px;
   border-radius: 5px;
 }
+
+.profile-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.home-icon {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+
+
+
+

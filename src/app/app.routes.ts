@@ -4,6 +4,7 @@ import { SpeciesPageComponent } from './components/species-page/species-page.com
 import { StatsPageComponent } from './components/stats-page/stats-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {UserDetailsComponent} from "./user-details/user-details.component";
 
 export const routes: Routes = [
   {
@@ -31,4 +32,5 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
   },
+  { path: 'user-details', component: UserDetailsComponent }
 ];

@@ -115,4 +115,10 @@ export class DashboardComponent {
   closeDiveDetail() {
     this.showDiveDetail = false;
   }
+  navigateToUserDetails() {
+    this.router.navigate(['/user-details']);
+  }
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }

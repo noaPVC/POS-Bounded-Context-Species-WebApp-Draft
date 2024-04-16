@@ -9,6 +9,7 @@ import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-dive',
@@ -50,26 +51,17 @@ export class AddDiveComponent {
   ];
   diveType: string[] = ['NIGHT', 'CAVE', 'ABNOE'];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,private http: HttpClient) {}
 
   //formObject TODO
   dive = this.formBuilder.group({
     date: [''],
     rating: [''],
     weather: [''],
-    visibilityDistance: this.formBuilder.group({
-      visibilityDistanceValue: [''],
-      distanceUnit: ['METER'],
-    }),
+    visibilityDistance:[''],
     visibilityRating: [''],
-    waterTemperature: this.formBuilder.group({
-      temperatureValue: [''],
-      temperatureUnit: ['CELSIUS'],
-    }),
-    airTemperature: this.formBuilder.group({
-      temperatureValue: [''],
-      temperatureUnit: ['CELSIUS'],
-    }),
+    waterTemperature: [''],
+    airTemperature: [''],
     entry: [''],
     comments: [''],
     buddy: [''],
@@ -82,6 +74,40 @@ export class AddDiveComponent {
 
   //TODO
   addDive() {
-    console.log('hlsdf');
+    console.log(this.dive);
+    var newdive = this.dive.value;
+    var temp = newdive.waterTemperature;
+    //@ts-ignore
+    newdive.waterTemperature = {waterTemperatureValue: temp, temperatureUnit: 'CELSIUS'};
+   temp = newdive.airTemperature;
+    //@ts-ignore
+    newdive.airTemperature = {airTemperatureValue: temp, temperatureUnit: 'CELSIUS'};
+    temp = newdive.visibilityDistance;
+    //@ts-ignore
+    newdive.visibilityDistance = {visibilityDistanceValue: temp, distanceUnit: 'METER'};
+    // temp = newdive.visibilityRating;
+    // //@ts-ignore
+    // newdive.visibilityRating = this.visibilityRatingTypes.indexOf(temp);
+    // temp = newdive.weather;
+    // //@ts-ignore
+    // newdive.weather = this.weathers.indexOf(temp);
+    // temp = newdive.entry;
+    // //@ts-ignore
+    // newdive.entry = this.entry.indexOf(temp);
+
+    newdive.equipment=null;
+    newdive.operator=null;
+    newdive.superDive=null;
+    newdive.diveVacation=null;
+    console.log(newdive);
+    
+
+    //@ts-ignore
+    newdive.visibilityDistance = {visibilityDistanceValue: temp, distanceUnit: 'METER'};
+    this.http.post('http://localhost:8080/api/dive/', newdive).subscribe(data => {
+      console.log(data);
+    });
+
+
   }
 }

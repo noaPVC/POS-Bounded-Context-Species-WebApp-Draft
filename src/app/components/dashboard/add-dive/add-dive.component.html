@@ -1,17 +1,18 @@
 <div style="width: 620px">
-  <form (submit)="addDive()">
+  <form (ngSubmit)="addDive()" [formGroup]="dive">
     <div style="display: flex; flex-direction: column; gap: 20px">
       <!--Date+Weather-->
       <div style="display: flex; gap: 12px">
         <!--Date-->
         <div style="display: flex; flex-direction: column">
           <label>Date</label>
-          <p-calendar appendTo="body" [showIcon]="true"></p-calendar>
+          <p-calendar appendTo="body" [showIcon]="true" formControlName="date"></p-calendar>
         </div>
         <!--Weather-->
         <div style="display: flex; flex-direction: column">
           <label>Weather</label>
           <p-dropdown
+          formControlName="weather"
             [options]="weathers"
             [showClear]="true"
             appendTo="body"
@@ -23,7 +24,7 @@
       <div style="display: flex; gap: 20px; align-items: flex-start">
         <div style="display: flex; flex-direction: column; gap: 20px">
           <label>Rating</label>
-          <p-rating [cancel]="false"></p-rating>
+          <p-rating formControlName="rating" [cancel]="false"></p-rating>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px">
           <label>Visibility Rating</label>
@@ -31,6 +32,7 @@
             [options]="visibilityRatingTypes"
             [showClear]="true"
             appendTo="body"
+            formControlName="visibilityRating"
             placeholder="Choose Visibility"
           ></p-dropdown>
         </div>
@@ -38,6 +40,7 @@
           <label>Visibility Distance</label>
           <p-inputNumber
             mode="decimal"
+            formControlName="visibilityDistance"
             inputId="withoutgrouping"
             [useGrouping]="false"
           ></p-inputNumber>
@@ -49,6 +52,7 @@
           <label>Water Temperature</label>
           <p-inputNumber
             mode="decimal"
+            formControlName="waterTemperature"
             inputId="withoutgrouping"
             [useGrouping]="false"
           ></p-inputNumber>
@@ -57,6 +61,7 @@
           <label>Air Temperature</label>
           <p-inputNumber
             mode="decimal"
+            formControlName="airTemperature"
             inputId="withoutgrouping"
             [useGrouping]="false"
           ></p-inputNumber>
@@ -69,6 +74,7 @@
           <p-dropdown
             [options]="entry"
             [showClear]="true"
+            formControlName="entry"
             appendTo="body"
             placeholder="Choose Entry"
           ></p-dropdown>
@@ -79,6 +85,7 @@
             [options]="diveType"
             [showClear]="true"
             appendTo="body"
+            formControlName="diveType"
             placeholder="Choose Dive Type"
           ></p-dropdown>
         </div>
@@ -86,12 +93,10 @@
       <div style="display: flex; gap: 20px">
         <div style="display: flex; flex-direction: column; gap: 8px">
           <label>Buddy</label>
-          <p-dropdown
-            [options]="entry"
-            [showClear]="true"
-            appendTo="body"
+          <p-inputNumber
             placeholder="Choose Buddy"
-          ></p-dropdown>
+            formControlName="buddy"
+          ></p-inputNumber>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px">
           <label>Dive Vacation</label>
@@ -99,6 +104,7 @@
             [options]="entry"
             [showClear]="true"
             appendTo="body"
+            formControlName="diveVacation"
             placeholder="Choose Vacation"
           ></p-dropdown>
         </div>
@@ -110,7 +116,7 @@
           rows="5"
           cols="30"
           pInputTextarea
-          formControlName="text"
+          formControlName="comments"
         ></textarea>
       </div>
       <p-button type="submit">Add Dive</p-button>

@@ -77,33 +77,25 @@ export class AddDiveComponent {
     console.log(this.dive);
     var newdive = this.dive.value;
     var temp = newdive.waterTemperature;
+    console.log(temp);
+    
     //@ts-ignore
-    newdive.waterTemperature = {waterTemperatureValue: temp, temperatureUnit: 'CELSIUS'};
-   temp = newdive.airTemperature;
+    newdive.waterTemperature = {temperatureValue: temp, temperatureUnit: 'CELSIUS'};
+    temp = newdive.airTemperature;
     //@ts-ignore
-    newdive.airTemperature = {airTemperatureValue: temp, temperatureUnit: 'CELSIUS'};
+    newdive.airTemperature = {temperatureValue: temp, temperatureUnit: 'CELSIUS'};
     temp = newdive.visibilityDistance;
     //@ts-ignore
     newdive.visibilityDistance = {visibilityDistanceValue: temp, distanceUnit: 'METER'};
-    // temp = newdive.visibilityRating;
-    // //@ts-ignore
-    // newdive.visibilityRating = this.visibilityRatingTypes.indexOf(temp);
-    // temp = newdive.weather;
-    // //@ts-ignore
-    // newdive.weather = this.weathers.indexOf(temp);
-    // temp = newdive.entry;
-    // //@ts-ignore
-    // newdive.entry = this.entry.indexOf(temp);
-
+  
     newdive.equipment=null;
-    newdive.operator=null;
+    //@ts-ignore
+    newdive.operator=1;
     newdive.superDive=null;
     newdive.diveVacation=null;
+    newdive.buddy=null;
     console.log(newdive);
     
-
-    //@ts-ignore
-    newdive.visibilityDistance = {visibilityDistanceValue: temp, distanceUnit: 'METER'};
     this.http.post('http://localhost:8080/api/dive/', newdive).subscribe(data => {
       console.log(data);
     });

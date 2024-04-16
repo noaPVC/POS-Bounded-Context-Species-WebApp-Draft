@@ -7,7 +7,7 @@ import { DiverDto, loginRequest } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = 'http://localhost:9090/api';
   constructor(private http: HttpClient) {}
 
   getAllUsers() {

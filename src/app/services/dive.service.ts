@@ -20,6 +20,14 @@ export class DiveService {
       );
   }
 
+  getAllDives() {
+    return this.http.get<any>(`${this.apiUrl + '/dive/'}`, {}).pipe(
+      map((response: any) => {
+        return this.mapDives(response);
+      })
+    );
+  }
+
   getDiveById(diveId: number) {
     return this.http.get<any>(`${this.apiUrl + '/dive/' + diveId}`, {}).pipe(
       map((response: any) => {

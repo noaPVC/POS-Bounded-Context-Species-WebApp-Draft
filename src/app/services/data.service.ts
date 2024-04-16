@@ -8,7 +8,7 @@ import { DangerousFeed, DepthNode, FishSpecies } from '../models/models';
 })
 export class DataService {
 
-  BASE_URL = 'https://localhost:7084/api'
+  BASE_URL = 'http://localhost:5054/api'
 
   constructor(private http: HttpClient) {}
 

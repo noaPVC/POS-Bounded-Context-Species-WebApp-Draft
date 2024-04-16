@@ -30,35 +30,7 @@ export class DashboardComponent {
   showDiveDetail = false;
   detailDive: Dive | null = null;
 
-  dives: DivePreview[] = [
-    {
-      id: 1,
-      date: new Date('2021-01-01'),
-      weather: 'sunny',
-      rating: 5,
-      entry: 'boat',
-      comments: 'great dive',
-      operator: this.user?.id || 0,
-    },
-    {
-      id: 2,
-      date: new Date(),
-      weather: 'rainy',
-      rating: 3,
-      entry: 'shore',
-      comments: 'ok dive',
-      operator: this.user?.id || 0,
-    },
-    {
-      id: 3,
-      date: new Date(),
-      weather: 'cloudy',
-      rating: 4,
-      entry: 'boat',
-      comments: 'good dive',
-      operator: this.user?.id || 0,
-    },
-  ];
+  dives: DivePreview[] = [];
 
   constructor(
     private userService: UserService,
@@ -69,7 +41,20 @@ export class DashboardComponent {
     this.user = this.userService.getUserFromLocalStorage();
     if (this.user === null) {
       //router.navigate(['/login']);
+       
     }
+  }
+
+  ngOnInit():  void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    let dives =  this.diveService.getAllDives().subscribe({
+      next: (dives: DivePreview[]) => {
+        this.dives = dives;
+      }
+    });
+    console.log(this.dives);
+    
   }
 
   diveDetail(dive: number) {

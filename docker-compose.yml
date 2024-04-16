@@ -13,7 +13,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
       WIREMOCK_URL: http://diver-service:8080
-      DIVER_API_URL: http://localhost:9090
+      DIVER_API_URL: http://diver-user-application:8080
     networks:
       - diver-network
   diver-user-application:
@@ -56,6 +56,35 @@ services:
       POSTGRES_DB: user
     networks:
       - diver-network
+  species-backend:
+    image: niklasxulls/dive-species-rest-api:latest
+    container_name: species-rest-api
+    volumes:
+      - ./backend/appsettings.Production.json:/appsettings.Production.json
+    ports:
+      - "5054:80"
+    networks:
+      - dive-species-network
+    depends_on:
+      - species-db
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["sleep 20 && dotnet DiveSpecies.Rest.dll"]
+
+  species-db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: species-sql-server
+    volumes:
+      - ./db/data:/var/opt/mssql/data
+      - ./db/log:/var/opt/mssql/log
+    environment:
+      - ACCEPT_EULA=y
+      - MSSQL_SA_PASSWORD=A_VeryComplex123Password
+    ports: 
+      - "1435:1433" 
+    networks:
+      - dive-species-network
 networks:
   diver-network:
     driver: bridge
+  dive-species-network:
+    name: dive-species-network

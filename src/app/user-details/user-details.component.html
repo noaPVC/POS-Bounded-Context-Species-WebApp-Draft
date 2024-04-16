@@ -2,14 +2,18 @@
   <div class="home-icon" (click)="navigateToDashboard()">
     <i class="fas fa-home"></i>
   </div>
-  <div class="profile-icon" (click)="navigateToUserDetails()" >
+  <div class="profile-icon" (click)="navigateToUserDetails()">
     <i class="fas fa-user"></i>
   </div>
   <div class="container">
-
     <div class="user-profile">
       <div class="profile-picture">
-        <img src="{{ user?.profile_picture ? user?.profile_picture : 'assets/favicon.png' }}" alt="Profile Picture">
+        <img
+          src="{{
+            user?.profile_picture ? user?.profile_picture : 'assets/favicon.png'
+          }}"
+          alt="Profile Picture"
+        />
       </div>
 
       <div class="user-info">
@@ -20,10 +24,7 @@
         <p><strong>Last Name:</strong> {{ user?.lastName }}</p>
         <p><strong>Birthday:</strong> {{ user?.birthday | date }}</p>
         <p><strong>Description:</strong> {{ user?.description }}</p>
-        <p><strong>Rating:</strong></p>
-        <div style="display: flex; flex-direction: column; gap: 20px">
-          <p-rating [cancel]="false" [readonly]="true"></p-rating>
-        </div>
+        <p><strong>Rating:</strong> {{ user?.rating }} von 5</p>
       </div>
     </div>
   </div>

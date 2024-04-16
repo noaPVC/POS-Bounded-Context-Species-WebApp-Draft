@@ -2,29 +2,55 @@
   <div class="home-icon" (click)="navigateToDashboard()">
     <i class="fas fa-home"></i>
   </div>
-  <div class="profile-icon" (click)="navigateToUserDetails()" >
+  <div class="profile-icon" (click)="navigateToUserDetails()">
     <i class="fas fa-user"></i>
   </div>
   <div class="container">
-
+    <div class="container2">
+    </div>
     <div class="user-profile">
       <div class="profile-picture">
-        <img src="{{ user?.profile_picture ? user?.profile_picture : 'assets/favicon.png' }}" alt="Profile Picture">
+        <img
+          src="{{
+            user?.profile_picture ? user?.profile_picture : 'assets/favicon.png'
+          }}"
+          alt="Profile Picture"
+        />
       </div>
-
       <div class="user-info">
-        <h2>{{ user?.username }}</h2>
-        <p><strong>ID:</strong> {{ user?.id }}</p>
-        <p><strong>Email:</strong> {{ user?.email }}</p>
-        <p><strong>First Name:</strong> {{ user?.firstName }}</p>
-        <p><strong>Last Name:</strong> {{ user?.lastName }}</p>
-        <p><strong>Birthday:</strong> {{ user?.birthday | date }}</p>
-        <p><strong>Description:</strong> {{ user?.description }}</p>
-        <p><strong>Rating:</strong></p>
-        <div style="display: flex; flex-direction: column; gap: 20px">
-          <p-rating [cancel]="false" [readonly]="true"></p-rating>
-        </div>
+        <table>
+          <tr>
+            <td><strong>User Name:</strong></td>
+            <td colspan="2"><h2>{{ user?.username || 'Johnny123' }}</h2></td>
+          </tr>
+          <tr>
+            <td><strong>First Name:</strong></td>
+            <td>{{ user?.firstName || 'John' }}</td>
+            <td><strong>Last Name:</strong></td>
+            <td>{{ user?.lastName || 'Doe' }}</td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td>{{ user?.email || 'john.doe@gmail.com' }}</td>
+          </tr>
+          <tr>
+            <td><strong>Birthday:</strong></td>
+            <td>{{ user?.birthday || '16.04.1999' }}</td>
+          </tr>
+          <tr>
+            <td><strong>Description:</strong></td>
+            <td>{{ user?.description || 'I am John Doe, an adventurous diver exploring the depths, unraveling the secrets of the underwater realm with each dive.' }}</td>
+          </tr>
+          <tr>
+            <td><strong>Rating:</strong></td>
+            <td>{{ user?.rating || '4.5' }} von 5</td>
+          </tr>
+        </table>
       </div>
+      
+      
     </div>
+    
   </div>
 </div>
+

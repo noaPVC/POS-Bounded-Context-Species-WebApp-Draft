@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stats-page',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class StatsPageComponent {
 
+  constructor(private router: Router) {}
+
+  navigateToUserDetails() {
+    this.router.navigate(['/user-details']);
+  }
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }

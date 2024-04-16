@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DataService } from '../../services/data.service';
 import { DangerousFeedItemComponent } from './dangerous-feed-item/dangerous-feed-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dangerous-feed-page',
@@ -21,6 +22,12 @@ export class DangerousFeedPageComponent {
 
   dangerousFeeds$ = this.dataService.getDangerousFeed({})
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
+  navigateToUserDetails() {
+    this.router.navigate(['/user-details']);
+  }
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }
